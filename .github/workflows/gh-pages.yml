@@ -27,6 +27,7 @@ jobs:
       - name: npm install and build
         run: |
           npm i
+          mkdir -p ./docs/demo/
           npm run docs
       - name: deploy to gh-pages
         env:
