@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Home - Postman Documentation</title>
+    <title>jsdocs.js - Postman Documentation</title>
 
     <script src="scripts/prettify/prettify.js"></script>
     <script src="scripts/prettify/lang-css.js"></script>
@@ -28,31 +28,69 @@
 
 <div id="main">
     
+    <h1 class="page-title">jsdocs.js</h1>
+    
 
     
 
 
 
     
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/** ****************************************************************************************************
+ * File: jsdocs.js
+ * Project: template-npm-module
+ * @author Nick Soggin &lt;iSkore@users.noreply.github.com> on 30-May-2018
+ *******************************************************************************************************/
+'use strict';
+
+/**
+ * @global
+ * @alias &lt;a href="demo/">Demo&lt;/a>
+ */
 
 
-
-
-
-
-
-
-
-    
-
-
-    <section class="readme">
-        <article><h1>geonet-layergl</h1>
-<p>@geonet/layergl - WebGL for Leaflet Layers</p>
-<h3><a href="./demo/">Demo</a></h3></article>
+module.exports = {
+    plugins: [
+        'plugins/markdown'
+    ],
+    recurseDepth: 20,
+    source: {
+        include: [
+            'README.md',
+            './'
+        ],
+        exclude: [
+            'demo',
+            'docs',
+            'node_modules'
+        ],
+        includePattern: '.+\\.js(doc|x)?$',
+        excludePattern: '(^|\\/|\\\\)_|(^|\\/|\\\\)node_modules'
+    },
+    sourceType: 'module',
+    tags: {
+        allowUnknownTags: true,
+        dictionaries: [
+            'jsdoc',
+            'closure'
+        ]
+    },
+    templates: {
+        cleverLinks: true,
+        monospaceLinks: true
+    },
+    opts: {
+        encoding: 'utf8',
+        destination: 'docs/',
+        recurse: true,
+        template: './node_modules/postman-jsdoc-theme'
+    }
+};
+</code></pre>
+        </article>
     </section>
-
-
 
 
 
