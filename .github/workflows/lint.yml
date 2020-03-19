@@ -24,7 +24,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm lint
         run: |
-          npm ci
+          npm i
           lerna run lint
         env:
           CI: true
