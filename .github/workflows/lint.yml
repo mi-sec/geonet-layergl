@@ -26,6 +26,7 @@ jobs:
         run: |
           npm i
           npm i -g lerna
+          lerna bootstrap
           lerna run lint
         env:
           CI: true
