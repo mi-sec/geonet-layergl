@@ -1,4 +1,44 @@
-/*
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>packages/layergl/lib/layergl.js - Postman Documentation</title>
+
+    <script src="scripts/prettify/prettify.js"></script>
+    <script src="scripts/prettify/lang-css.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/ionicons.min.css">
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+<body>
+
+<input type="checkbox" id="nav-trigger" class="nav-trigger" />
+<label for="nav-trigger" class="navicon-button x">
+  <div class="navicon"></div>
+</label>
+
+<label for="nav-trigger" class="overlay"></label>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="LayerGl.html">LayerGl</a><ul class='methods'><li data-type='method'><a href="LayerGl.html#initialize">initialize</a></li><li data-type='method'><a href="LayerGl.html#initialize">initialize</a></li><li data-type='method'><a href="LayerGl.html#~_bindTexture">_bindTexture</a></li><li data-type='method'><a href="LayerGl.html#~_bindTexture">_bindTexture</a></li><li data-type='method'><a href="LayerGl.html#~_bindTextureArrays">_bindTextureArrays</a></li><li data-type='method'><a href="LayerGl.html#~_bindTextureArrays">_bindTextureArrays</a></li><li data-type='method'><a href="LayerGl.html#~_getUniformSizes">_getUniformSizes</a></li><li data-type='method'><a href="LayerGl.html#~_getUniformSizes">_getUniformSizes</a></li><li data-type='method'><a href="LayerGl.html#~_initUniforms">_initUniforms</a></li><li data-type='method'><a href="LayerGl.html#~_initUniforms">_initUniforms</a></li><li data-type='method'><a href="LayerGl.html#~_linkShader">_linkShader</a></li><li data-type='method'><a href="LayerGl.html#~_linkShader">_linkShader</a></li><li data-type='method'><a href="LayerGl.html#~_loadGLProgram">_loadGLProgram</a></li><li data-type='method'><a href="LayerGl.html#~_loadGLProgram">_loadGLProgram</a></li><li data-type='method'><a href="LayerGl.html#~_render">_render</a></li><li data-type='method'><a href="LayerGl.html#~_render">_render</a></li><li data-type='method'><a href="LayerGl.html#~createTile">createTile</a></li><li data-type='method'><a href="LayerGl.html#~createTile">createTile</a></li><li data-type='method'><a href="LayerGl.html#~getGlError">getGlError</a></li><li data-type='method'><a href="LayerGl.html#~getGlError">getGlError</a></li></ul></li></ul>
+</nav>
+
+<div id="main">
+    
+    <h1 class="page-title">packages/layergl/lib/layergl.js</h1>
+    
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/*
  * @class GridLayer.GL
  * @inherits GridLayer
  *
@@ -85,7 +125,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
      * fragment shaders handle the processing of individual vertex fragments
      * fragments shader must include:
      * - **precision** declaration for float types
-     *      - `precision <precision> float;`
+     *      - `precision &lt;precision> float;`
      *          - `precision highp float;` - recommend using `highp` float precision for best results
      * - **uniform** (uniform passed in from js program links)
      *      - `uniform float u_Now;`
@@ -185,7 +225,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
 
         this._gl.getExtension( 'OES_texture_float_linear' );
 
-        for ( let i = 0; i < options.extensions.length; i++ ) {
+        for ( let i = 0; i &lt; options.extensions.length; i++ ) {
             this._gl.getExtension( options.extensions[ i ] );
         }
     },
@@ -217,7 +257,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
         if ( !shaderCode || typeof shaderCode !== 'string' ) {
             throw new Error( '"shaderCode" is required and must be type "string"' );
         }
-        else if ( type !== this._gl.VERTEX_SHADER && type !== this._gl.FRAGMENT_SHADER ) {
+        else if ( type !== this._gl.VERTEX_SHADER &amp;&amp; type !== this._gl.FRAGMENT_SHADER ) {
             throw new Error( '"type" must be VERTEX_SHADER or FRAGMENT_SHADER' );
         }
 
@@ -581,7 +621,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
             unwrappedKey = this._tileCoordsToKey( coords ),
             texFetches   = [];
 
-        for ( let i = 0; i < this._tileLayers.length && i < 8; i++ ) {
+        for ( let i = 0; i &lt; this._tileLayers.length &amp;&amp; i &lt; 8; i++ ) {
             texFetches.push( this._getNthTile( i, coords ) );
         }
 
@@ -592,7 +632,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
                     this._2dContexts[ unwrappedKey ]      = ctx;
                 }
 
-                for ( let i = 0; i < this._tileLayers.length && i < 8; i++ ) {
+                for ( let i = 0; i &lt; this._tileLayers.length &amp;&amp; i &lt; 8; i++ ) {
                     this._bindTexture( i, textureImages[ i ] );
                 }
 
@@ -633,7 +673,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
     },
 
     _onFrame() {
-        if ( this._uNowPosition && this._map ) {
+        if ( this._uNowPosition &amp;&amp; this._map ) {
             this.reRender();
             this._animFrame = L.Util.requestAnimFrame( this._onFrame, this, false );
         }
@@ -665,7 +705,7 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
                 continue;
             }
 
-            for ( let i = 0; i < this._tileLayers.length && i < 8; i++ ) {
+            for ( let i = 0; i &lt; this._tileLayers.length &amp;&amp; i &lt; 8; i++ ) {
                 this._bindTexture( i, this._fetchedTextures[ wrappedKey ][ i ] );
             }
 
@@ -722,3 +762,22 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
 L.tileLayer.layerGl = function( opts ) {
     return new L.TileLayer.LayerGl( opts );
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<br class="clear">
+
+<footer>
+    Documentation generated at Thu Mar 19 2020 20:57:38 GMT+0000 (Coordinated Universal Time)
+</footer>
+
+<script>prettyPrint();</script>
+<script src="scripts/linenumber.js"></script>
+</body>
+</html>
