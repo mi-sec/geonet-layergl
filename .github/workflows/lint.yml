@@ -25,6 +25,7 @@ jobs:
       - name: npm lint
         run: |
           npm i
+          npm i -g lerna
           lerna run lint
         env:
           CI: true
