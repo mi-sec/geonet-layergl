@@ -1,0 +1,40 @@
+{
+    "name": "boilerplate-leaflet-map",
+    "version": "1.0.0",
+    "description": "Boilerplate Leaflet map for testing WMS/WFS/etc services",
+    "main": "index.js",
+    "scripts": {
+        "build": "NODE_ENV=production parcel build src/index.html --public-url /demo/ --out-dir build --target browser",
+        "dev": "parcel src/index.html --out-dir build --target browser",
+        "start": "parcel src/index.html --out-dir build --target browser",
+        "test": "mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/iSkore/boilerplate-leaflet-map.git"
+    },
+    "keywords": [
+        "leaflet",
+        "map"
+    ],
+    "author": "Nick Soggin",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/iSkore/boilerplate-leaflet-map/issues"
+    },
+    "homepage": "https://github.com/iSkore/boilerplate-leaflet-map#readme",
+    "devDependencies": {
+        "@babel/core": "*",
+        "eslint": "*",
+        "glslify-bundle": "*",
+        "glslify-deps": "*",
+        "parcel-bundler": "*",
+        "raw-loader": "*",
+        "sass": "*",
+        "@babel/polyfill": "*",
+        "@babel/preset-env": "*"
+    },
+    "dependencies": {
+        "leaflet": "*"
+    }
+}

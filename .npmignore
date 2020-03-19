@@ -1,0 +1,11 @@
+.github/
+docs/
+test/
+.git
+.idea
+.editorconfig
+.eslintignore
+.eslintrc.js
+.jshintrc
+.npmrc
+jsdocs.js

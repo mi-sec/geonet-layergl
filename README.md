@@ -1,2 +1,3 @@
 # geonet-layergl
-@geonet/layergl - apply WebGL to Leaflet layers
+
+@geonet/layergl - WebGL for Leaflet Layers

@@ -1,0 +1,11 @@
+{
+    "name": "root",
+    "private": true,
+    "scripts": {
+        "docs": "jsdoc -c jsdocs.js -r",
+    },
+    "devDependencies": {
+        "lerna": "^3.20.2",
+        "postman-jsdoc-theme": "0.0.3"
+    }
+}
