@@ -5,6 +5,12 @@
  *******************************************************************************************************/
 'use strict';
 
+/**
+ * @global
+ * @alias <a href="demo/">Demo</a>
+ */
+
+
 module.exports = {
     plugins: [
         'plugins/markdown'
@@ -39,7 +45,6 @@ module.exports = {
         encoding: 'utf8',
         destination: 'docs/',
         recurse: true,
-        template: './node_modules/postman-jsdoc-theme',
-        tutorials: './docs/demo/'
+        template: './node_modules/postman-jsdoc-theme'
     }
 };
