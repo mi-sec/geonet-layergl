@@ -49,7 +49,45 @@
     <section class="readme">
         <article><h1>geonet-layergl</h1>
 <p>@geonet/layergl - WebGL for Leaflet Layers</p>
-<h3><a href="./demo/">Demo</a></h3></article>
+<h3><a href="./demo/">Demo</a></h3>
+<p>Leaflet Layers with low-level WebGL shaders</p>
+<p><strong>Currently imagery adjustment suite support</strong>:</p>
+<ul>
+<li><code>brightness</code> (basic rgb color model adjustment)</li>
+<li><code>contrast</code> (michelson contrast algorithm)</li>
+<li><code>sharpen</code> (hysteresis thresholding and the laplace operator - laplacian kernel algorithm)
+<ul>
+<li>tested the following algorithms and had poor results:
+<ul>
+<li>Sobel</li>
+<li>Roberts</li>
+<li>Laplacian of Gaussian</li>
+<li>Robinson Compass</li>
+<li>Zero-cross mask sharpening</li>
+<li>Canny mask sharpening</li>
+<li>gabor unmask sharpening</li>
+<li>various multi-pass unmask sharpening methods</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>night vision</code> (a mistake made when modifying the laplacian filter kernel, significantly brightens dark areas and
+slightly sharpens areas of high luminance contrast, resulting in a night-vision-like brightness and edge emphasis)</li>
+</ul>
+<p><strong>Experimental support</strong>:</p>
+<ul>
+<li><code>dynamic range adjustment</code> (work in progress - at the moment it only applies gamma correction and is <strong>not</strong> adaptive
+or dynamic)</li>
+<li><code>edge detection</code> (prewitt operator algorithm - can eventually be used for automated image-to-geometry edge detection
+and tagging)</li>
+</ul>
+<p><strong>Dream support</strong>:</p>
+<p>one day, mapping data via WebGL could result in:</p>
+<ul>
+<li><code>rotation</code> (highly experimental and barely underway - map rotation support in Leaflet)</li>
+<li><code>line-of-sight</code> (&quot;viewshed&quot; or &quot;line-of-sight&quot; computing when served SRTM or other elevation based data)</li>
+<li>other elevation data computations can be made <strong>on the fly</strong> with this module</li>
+</ul></article>
     </section>
 
 
@@ -62,7 +100,7 @@
 <br class="clear">
 
 <footer>
-    Documentation generated at Fri Mar 20 2020 17:20:06 GMT+0000 (Coordinated Universal Time)
+    Documentation generated at Fri Mar 20 2020 17:58:50 GMT+0000 (Coordinated Universal Time)
 </footer>
 
 <script>prettyPrint();</script>
