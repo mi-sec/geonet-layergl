@@ -7,15 +7,7 @@ mat3 laplacianKernel = mat3(
 	-1.0, -1.0, -1.0
 );
 
-// research Sobel & Prewitt (Prewitt is probably the best candidate)
-// research Kirsch & Robinson Compass (poor results)
-// try edge algorithms:
-// - Sobel
-// - Prewitt
-// - Roberts
-// - Laplacian of Gaussian
-// - Zero-cross
-// - Canny
+// Sobel & Prewitt (Prewitt is probably the best candidate)
 vec4 applyEdgeDetection( sampler2D u_texture0, vec2 v_TextureCoords, float u_draGamma ) {
 	vec3 acc = vec3( 0, 0, 0 );
 
