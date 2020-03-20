@@ -181,8 +181,6 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
             }
         );
 
-        console.log( this._tileLayers );
-
         this._gl.getExtension( 'OES_texture_float_linear' );
 
         for ( let i = 0; i < options.extensions.length; i++ ) {
@@ -571,7 +569,6 @@ L.TileLayer.LayerGl = L.GridLayer.extend( {
      * @return {*} - tile
      */
     createTile( coords, done ) {
-        // console.log( this._unwrappedKey );
         const tile         = L.DomUtil.create( 'canvas', 'leaflet-tile' );
         tile.width         = tile.height = this.options.tileSize;
         tile.onselectstart = tile.onmousemove = L.Util.falseFn;
