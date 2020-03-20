@@ -2,6 +2,8 @@
 
 @geonet/layergl - WebGL for Leaflet Layers
 
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+
 ### [Demo](./demo/)
 
 Leaflet Layers with low-level WebGL shaders
