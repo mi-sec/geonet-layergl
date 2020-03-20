@@ -37,3 +37,8 @@ one day, mapping data via WebGL could result in:
 - `rotation` (highly experimental and barely underway - map rotation support in Leaflet)
 - `line-of-sight` ("viewshed" or "line-of-sight" computing when served SRTM or other elevation based data)
 - other elevation data computations can be made **on the fly** with this module 
+
+
+**Contribution**:
+
+This module is based on Ivan Sanchez's `Leaflet.TileLayer.GL` repo that appears to no longer be maintained.
