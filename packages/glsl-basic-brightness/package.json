@@ -1,5 +1,5 @@
 {
-    "name": "@mi-sec/glsl-basic-brightness",
+    "name": "@geonet/glsl-basic-brightness",
     "version": "1.0.0",
     "description": "basic brighten algorithm for 2D texture samplers in WebGL",
     "main": "lib/basic-brightness.glsl",

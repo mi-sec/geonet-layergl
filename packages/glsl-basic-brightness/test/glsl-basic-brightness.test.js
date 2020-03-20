@@ -10,7 +10,7 @@ const
     VERT_SHADER = fs.readFileSync( `${ __dirname }/test.vert.glsl` ).toString(),
     SHADER      = fs.readFileSync( `${ __dirname }/test.glsl` ).toString();
 
-describe( '@mi-sec/glsl-basic-brightness Test', () => {
+describe( '@geonet/glsl-basic-brightness Test', () => {
     const
         width      = 16,
         height     = 16,
