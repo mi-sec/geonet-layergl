@@ -39,6 +39,7 @@ class Map
         this.bindUniforms( 'u_rangeWidth', 'u_rangeWidth', 'change input' );
         this.bindUniforms( 'u_sharpen', 'u_sharpen', 'change input' );
         this.bindUniforms( 'u_sharpenRadius', 'u_sharpenRadius', 'change input' );
+        this.bindUniforms( 'u_nightVision', 'u_nightVision', 'change input' );
     }
 
     registerEvents()
@@ -62,7 +63,8 @@ class Map
                 u_rangeCenter: +document.getElementById( 'u_rangeCenter' ).value,
                 u_rangeWidth: +document.getElementById( 'u_rangeWidth' ).value,
                 u_sharpen: +document.getElementById( 'u_sharpen' ).value,
-                u_sharpenRadius: +document.getElementById( 'u_sharpenRadius' ).value
+                u_sharpenRadius: +document.getElementById( 'u_sharpenRadius' ).value,
+                u_nightVision: +document.getElementById( 'u_nightVision' ).value
             },
             vertexShader: this.$shaders.main.vert,
             fragmentShader: this.$shaders.main.frag,
@@ -80,7 +82,14 @@ class Map
                         hist_op: 'none',
                         nullPixelFlip: true,
                         resampler_filter: 'bilinear',
-                        sharpen_mode: 'none'
+                        sharpen_mode: 'none',
+
+                        // 'histCenterTile': false,
+                        // 'histLinearNormClip': '0,1',
+                        // 'histOp': 'auto-minmax',
+                        // 'sharpen_percent': 0,
+                        // 'gamma': 1,
+                        // 'histCenterClip': 0.5
                     } ),
                     transparent: true
                 } )
@@ -92,6 +101,10 @@ class Map
     bindUniforms( key, id, evt )
     {
         L.DomEvent.on( document.getElementById( id ), evt, ( e ) => {
+            if ( e.target.type === 'checkbox' ) {
+                e.target.value = e.target.checked ? 1.0 : 0.0;
+            }
+
             this.$layerGl.setUniform( key, e.target.value );
             this.$layerGl.reRender();
         } );

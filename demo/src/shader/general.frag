@@ -24,6 +24,7 @@ uniform float u_rangeCenter;
 uniform float u_rangeWidth;
 uniform float u_sharpen;
 uniform float u_sharpenRadius;
+uniform float u_nightVision;
 
 //#pragma glslify: pointInBBox     = require('./src/pointInBBox.glsl');
 //#pragma glslify: rgb2hsv         = require('./src/rgb2hsv.glsl');
@@ -33,7 +34,7 @@ uniform float u_sharpenRadius;
 #pragma glslify: applySharpen    = require('./src/applySharpen.glsl');
 
 //#pragma glslify: applyDynamicRangeAdjustment = require('./src/applyDynamicRangeAdjustment.glsl');
-//#pragma glslify: applyNightVision            = require('./src/applyNightVision.glsl');
+#pragma glslify: applyNightVision            = require('./src/applyNightVision.glsl');
 //#pragma glslify: applyEdgeDetection          = require('./src/applyEdgeDetection.glsl');
 
 void main( void ) {
@@ -48,6 +49,11 @@ void main( void ) {
 
     // apply sharpen
     texelColor = applySharpen( texelColor, u_texture0, v_TextureCoords, u_sharpen, u_sharpenRadius );
+
+    // apply night vision
+    if( u_nightVision == 1.0 ) {
+        texelColor = applyNightVision( texelColor, u_texture0, v_TextureCoords );
+    }
 
     // force alpha channel to 1.0 just in case matrix multiplicatives messed that up
     texelColor.a = 1.0;

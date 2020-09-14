@@ -1,6 +1,6 @@
 const float draDistanceToNeighborPixel = 1.0 / 256.0;
 
-vec4 applyNightVision( vec4 tex, sampler2D u_texture0, vec2 v_TextureCoords, float u_draGamma ) {
+vec4 applyNightVision( vec4 tex, sampler2D u_texture0, vec2 v_TextureCoords ) {
 	vec4 fragSample;
 	vec4 original = tex;
 
