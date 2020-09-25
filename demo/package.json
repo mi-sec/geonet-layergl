@@ -35,6 +35,7 @@
         "@babel/preset-env": "*"
     },
     "dependencies": {
-        "leaflet": "*"
+        "leaflet": "*",
+        "twgl.js": "^4.16.1"
     }
 }

@@ -5,13 +5,13 @@
  *******************************************************************************************************/
 'use strict';
 
-import L            from 'leaflet';
-import LayerControl from './LayerControl';
-
+import L from 'leaflet';
 import '../../packages/layergl';
 
 import frag from './shader/general.frag';
 import vert from './shader/general.vert';
+
+import * as twgl from 'twgl.js';
 
 class Map
 {
@@ -19,6 +19,7 @@ class Map
     {
         this.map = L.map( 'map', {
             renderer: L.svg(),
+            crs: L.CRS.EPSG4326,
             minZoom: 0,
             maxZoom: 25
         } );
@@ -26,6 +27,8 @@ class Map
         this.map.setView( [
             33.63791754316666, -84.43722620140763
         ], 20 );
+
+        // this.map.setView( [ 0, 0 ], 1 );
     }
 
     init()
@@ -56,6 +59,13 @@ class Map
             main: { frag, vert }
         };
 
+        // L.tileLayer(
+        //     // 'https://s3.amazonaws.com/elevation-tiles-prod/geotiff/{z}/{x}/{y}.tif'
+        //     // 'https://s3.amazonaws.com/elevation-tiles-prod/normal/{z}/{x}/{y}.png'
+        //     'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+        // ).addTo( this.map );
+
+        console.log( L );
         this.$layerGl = L.tileLayer.layerGl( {
             uniforms: {
                 u_brightness: +document.getElementById( 'u_brightness' ).value,
@@ -70,29 +80,36 @@ class Map
             fragmentShader: this.$shaders.main.frag,
 
             tileLayers: {
-                u_texture0: L.tileLayer.wms( 'https://omar.ossim.io/omar-wms/wms', {
-                    layers: 'omar:raster_entry',
-                    filter: 'image_id like \'058174419010_01_assembly\'',
-                    srs: 'EPSG:3857',
-                    styles: JSON.stringify( {
-                        bands: 'default',
-                        brightness: 0,
-                        contrast: 1,
-                        hist_center: false,
-                        hist_op: 'none',
-                        nullPixelFlip: true,
-                        resampler_filter: 'bilinear',
-                        sharpen_mode: 'none',
-
-                        // 'histCenterTile': false,
-                        // 'histLinearNormClip': '0,1',
-                        // 'histOp': 'auto-minmax',
-                        // 'sharpen_percent': 0,
-                        // 'gamma': 1,
-                        // 'histCenterClip': 0.5
-                    } ),
-                    transparent: true
+                u_texture0: L.tileLayer.wms( 'http://192.168.1.12:8080/geoserver/omar_imagery/wms', {
+                    layers: 'omar_imagery:057341085010_01_assembly',
+                    format: 'image/jpeg',
+                    // crs: L.CRS.EPSG4326,
+                    // uppercase: true,
+                    // transparent: false
                 } )
+                // u_texture0: L.tileLayer.wms( 'https://omar.ossim.io/omar-wms/wms', {
+                //     layers: 'omar:raster_entry',
+                //     filter: 'image_id like \'058174419010_01_assembly\'',
+                //     srs: 'EPSG:3857',
+                //     styles: JSON.stringify( {
+                //         bands: 'default',
+                //         brightness: 0,
+                //         contrast: 1,
+                //         hist_center: false,
+                //         hist_op: 'none',
+                //         nullPixelFlip: true,
+                //         resampler_filter: 'bilinear',
+                //         sharpen_mode: 'none'
+                //
+                //         // 'histCenterTile': false,
+                //         // 'histLinearNormClip': '0,1',
+                //         // 'histOp': 'auto-minmax',
+                //         // 'sharpen_percent': 0,
+                //         // 'gamma': 1,
+                //         // 'histCenterClip': 0.5
+                //     } ),
+                //     transparent: true
+                // } )
             }
         } )
             .addTo( this.map );
